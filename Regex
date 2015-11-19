@@ -1,0 +1,1 @@
+Dim result = Regex.Matches(src, "\(([^()]*)\)").Cast(Of Match)().Select(Function(x) x.Groups(1))

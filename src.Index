@@ -1,0 +1,22 @@
+Dim src As String = "hello (string1) there how (string2) are you?"
+Dim strs As New List(Of String)
+
+Dim start As Integer = 0
+Dim [end] As Integer = 0
+
+While start < src.Length
+
+    start = src.IndexOf("("c, start)
+    If start <> -1 Then
+        [end] = src.IndexOf(")"c, start)
+        If [end] <> -1 Then
+            Dim subStr As String = src.Substring(start + 1, [end] - start - 1)
+            If Not subStr.StartsWith("(") Then strs.Add(src.Substring(start + 1, [end] - start - 1))
+        End If
+    Else
+        Exit While
+    End If
+
+    start += 1 ' Increment start to skip to next (
+
+End While
